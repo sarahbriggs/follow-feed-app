@@ -37,6 +37,7 @@
                                         <state key="normal" title="Go"/>
                                         <connections>
                                             <action selector="buttonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="76q-1l-C1u"/>
+                                            <action selector="buttonClick:" destination="TAv-ec-dCw" eventType="touchUpInside" id="Dla-yi-aGD"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -52,6 +53,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="siI-ne-9N3"/>
                     </view>
+                    <connections>
+                        <outlet property="emailBox" destination="wqd-1c-YFE" id="1iY-EH-CZK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TKu-hi-i9h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

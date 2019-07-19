@@ -43,12 +43,9 @@ class ViewController: UIViewController {
             guard let data = data else {
                 return
             }
-            do {
-                if (try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any]) != nil {
-                    print("Successful post request")
-                }
-            } catch let error {
-                print(error.localizedDescription)
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+            if let responseJSON = responseJSON as? [String: Any] {
+                print(responseJSON)
             }
         })
         task.resume()

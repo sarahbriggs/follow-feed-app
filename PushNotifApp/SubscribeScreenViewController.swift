@@ -1,30 +1,36 @@
 //
-//  ViewController.swift
+//  SubscribeScreenViewController.swift
 //  PushNotifApp
 //
-//  Created by Carolyn Blumberg on 7/17/19.
+//  Created by Sarah Briggs on 7/19/19.
 //  Copyright © 2019 Carolyn Blumberg. All rights reserved.
 //
 
 import UIKit
 
-let user_id = "0"
-
-class ViewController: UIViewController {
-
-    @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var emailBox: UITextField!
-    @IBOutlet weak var nameBox: UITextField!
+class SubscribeScreenViewController: UIViewController {
+    
+    @IBOutlet weak var fauziaButton: UIButton!
+    
+    @IBOutlet weak var tomButton: UIButton!
+    
+    @IBOutlet weak var vonettaButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func buttonClick(_ sender: Any) {
+    
+    @IBAction func subscribeToFauzia(_ sender: Any) {
+        // post to API
+        
         //declare parameter as a dictionary which contains string as key and value combination. considering inputs are valid
-        let parameters = ["name": nameBox.text!, "email": emailBox.text!] as [String : Any]
+        let parameters = ["trader_id":"1", "user_id": "1"] as [String : Any]
+        
         //create the url with URL
-        let url = URL(string: "http://localhost:3000/users")! //change the url
+        let url = URL(string: "http://localhost:3000/subscription")! //change the url
+        
         //create the session object
         let session = URLSession.shared
         //now create the URLRequest object using the url object
@@ -45,15 +51,24 @@ class ViewController: UIViewController {
             guard let data = data else {
                 return
             }
-            do {
-                if (try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any]) != nil {
-                    print("Successful post request")
-                }
-            } catch let error {
-                print(error.localizedDescription)
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+            if let responseJSON = responseJSON as? [String: Any] {
+                print(responseJSON)
             }
         })
         task.resume()
     }
-}
+    
 
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
+    
+    
+}

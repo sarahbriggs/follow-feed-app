@@ -37,6 +37,7 @@
                                         <state key="normal" title="Go"/>
                                         <connections>
                                             <action selector="buttonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="76q-1l-C1u"/>
+                                            <segue destination="As8-yd-9kW" kind="show" id="9z4-fj-ZBa"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -56,6 +57,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TKu-hi-i9h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="132" y="970"/>
+        </scene>
+        <!--Subscribe Screen View Controller-->
+        <scene sceneID="ots-AL-69Z">
+            <objects>
+                <viewController id="As8-yd-9kW" customClass="SubscribeScreenViewController" customModule="PushNotifApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qe4-Ct-yU2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yMp-KD-fvY">
+                                <rect key="frame" x="281" y="100" width="44" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Fauzia"/>
+                                <connections>
+                                    <action selector="subscribeToFauzia:" destination="As8-yd-9kW" eventType="touchUpInside" id="Qcg-Zt-8KY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wts-tH-o48">
+                                <rect key="frame" x="288" y="242" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Tom"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wir-V7-lhG">
+                                <rect key="frame" x="274" y="381" width="58" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Vonetta!"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="FXi-kg-JEj"/>
+                    </view>
+                    <connections>
+                        <outlet property="fauziaButton" destination="yMp-KD-fvY" id="Jr7-rU-VZk"/>
+                        <outlet property="tomButton" destination="Wts-tH-o48" id="AZG-sA-F0a"/>
+                        <outlet property="vonettaButton" destination="Wir-V7-lhG" id="GwM-Lh-bAA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="18Q-gU-Y6F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="1809.4452773613195"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">

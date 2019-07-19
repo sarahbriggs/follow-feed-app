@@ -8,22 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		4910CC9422DF936100711956 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4910CC9322DF936100711956 /* AppDelegate.swift */; };
-		4910CC9622DF936100711956 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4910CC9522DF936100711956 /* SceneDelegate.swift */; };
 		4910CC9822DF936100711956 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4910CC9722DF936100711956 /* ViewController.swift */; };
 		4910CC9B22DF936100711956 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4910CC9922DF936100711956 /* Main.storyboard */; };
 		4910CC9D22DF936300711956 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4910CC9C22DF936300711956 /* Assets.xcassets */; };
 		4910CCA022DF936300711956 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4910CC9E22DF936300711956 /* LaunchScreen.storyboard */; };
+		49F7136622E24B4900D50494 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F7136522E24B4900D50494 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4910CC9022DF936100711956 /* PushNotifApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PushNotifApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4910CC9322DF936100711956 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4910CC9522DF936100711956 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4910CC9722DF936100711956 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4910CC9A22DF936100711956 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4910CC9C22DF936300711956 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4910CC9F22DF936300711956 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4910CCA122DF936300711956 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49F7136522E24B4900D50494 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +57,9 @@
 			isa = PBXGroup;
 			children = (
 				4910CC9322DF936100711956 /* AppDelegate.swift */,
-				4910CC9522DF936100711956 /* SceneDelegate.swift */,
 				4910CC9722DF936100711956 /* ViewController.swift */,
 				4910CC9922DF936100711956 /* Main.storyboard */,
+				49F7136522E24B4900D50494 /* LoginViewController.swift */,
 				4910CC9C22DF936300711956 /* Assets.xcassets */,
 				4910CC9E22DF936300711956 /* LaunchScreen.storyboard */,
 				4910CCA122DF936300711956 /* Info.plist */,
@@ -138,9 +138,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49F7136622E24B4900D50494 /* LoginViewController.swift in Sources */,
 				4910CC9822DF936100711956 /* ViewController.swift in Sources */,
 				4910CC9422DF936100711956 /* AppDelegate.swift in Sources */,
-				4910CC9622DF936100711956 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +287,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5DNRYCVMX9;
 				INFOPLIST_FILE = PushNotifApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -305,6 +306,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5DNRYCVMX9;
 				INFOPLIST_FILE = PushNotifApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

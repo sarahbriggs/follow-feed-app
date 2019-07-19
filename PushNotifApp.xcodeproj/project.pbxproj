@@ -13,6 +13,7 @@
 		4910CC9D22DF936300711956 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4910CC9C22DF936300711956 /* Assets.xcassets */; };
 		4910CCA022DF936300711956 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4910CC9E22DF936300711956 /* LaunchScreen.storyboard */; };
 		49F7136622E24B4900D50494 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F7136522E24B4900D50494 /* LoginViewController.swift */; };
+		9AFA3B8122E24E84007C6AF7 /* SubscribeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFA3B8022E24E84007C6AF7 /* SubscribeScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		4910CC9F22DF936300711956 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4910CCA122DF936300711956 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49F7136522E24B4900D50494 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9AFA3B8022E24E84007C6AF7 /* SubscribeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeScreenViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				4910CC9322DF936100711956 /* AppDelegate.swift */,
 				4910CC9722DF936100711956 /* ViewController.swift */,
 				4910CC9922DF936100711956 /* Main.storyboard */,
+				9AFA3B8022E24E84007C6AF7 /* SubscribeScreenViewController.swift */,
 				49F7136522E24B4900D50494 /* LoginViewController.swift */,
 				4910CC9C22DF936300711956 /* Assets.xcassets */,
 				4910CC9E22DF936300711956 /* LaunchScreen.storyboard */,
@@ -141,6 +144,7 @@
 				49F7136622E24B4900D50494 /* LoginViewController.swift in Sources */,
 				4910CC9822DF936100711956 /* ViewController.swift in Sources */,
 				4910CC9422DF936100711956 /* AppDelegate.swift in Sources */,
+				9AFA3B8122E24E84007C6AF7 /* SubscribeScreenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

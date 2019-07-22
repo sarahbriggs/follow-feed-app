@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func buttonClick(_ sender: Any) {
+    @IBAction func goClicked(_ sender: Any) {
         //declare parameter as a dictionary which contains string as key and value combination. considering inputs are valid
         let parameters = ["name": nameBox.text!, "email": emailBox.text!] as [String : Any]
         //create the url with URL

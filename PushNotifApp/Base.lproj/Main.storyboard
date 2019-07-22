@@ -36,7 +36,6 @@
                                         <rect key="frame" x="0.0" y="66.5" width="200" height="30"/>
                                         <state key="normal" title="Go"/>
                                         <connections>
-                                            <action selector="buttonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="76q-1l-C1u"/>
                                             <action selector="buttonClick:" destination="TAv-ec-dCw" eventType="touchUpInside" id="fIw-m8-e50"/>
                                         </connections>
                                     </button>
@@ -133,14 +132,13 @@
                                         <rect key="frame" x="0.0" y="104.5" width="200" height="30"/>
                                         <state key="normal" title="Go"/>
                                         <connections>
-                                            <action selector="buttonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mOq-RN-y7E"/>
+                                            <action selector="goClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="H6G-Nu-VLF"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0yk-Xs-QGG">
                                         <rect key="frame" x="0.0" y="142.5" width="200" height="30"/>
                                         <state key="normal" title="(or, log in!)"/>
                                         <connections>
-                                            <action selector="buttonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uqG-T0-5q5"/>
                                             <segue destination="TAv-ec-dCw" kind="show" id="lNS-jh-GDt"/>
                                         </connections>
                                     </button>

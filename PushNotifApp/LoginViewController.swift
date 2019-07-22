@@ -17,6 +17,11 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func buttonClick(_ sender: Any) {
+        if emailBox.text!.isEmpty {
+            self.emailBox.text = ""
+            self.emailBox.placeholder = "Try again"
+            return
+        }
         let parameters = ["email": emailBox.text!] as [String : Any]
         //create the url with URL
         let url = URL(string: "http://localhost:3000/sessions")! //change the url

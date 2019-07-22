@@ -18,7 +18,7 @@ class SubscribeScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        getAllTraders()
     }
     
     
@@ -65,7 +65,7 @@ class SubscribeScreenViewController: UIViewController {
         var trader_id = ""
         let parameters = ["name": traderName] as [String : Any]
         //create the url with URL
-        let url = URL(string: "http://localhost:3000/trader/index")! //change the url
+        let url = URL(string: "http://localhost:3000/trader/index.json")! //change the url
         //create the session object
         let session = URLSession.shared
         //now create the URLRequest object using the url object
@@ -91,6 +91,7 @@ class SubscribeScreenViewController: UIViewController {
             if let responseJSON = responseJSON as? [String: Any] {
                 if !responseJSON.isEmpty {
                     trader_id = responseJSON["id"] as! String
+                    print(responseJSON)
                 }
             }
         })
@@ -98,17 +99,17 @@ class SubscribeScreenViewController: UIViewController {
         return trader_id
     }
     
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func getAllTraders() {
+        let url = URL(string: "http://localhost:3000/trader/index.json")!
+        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+            guard let data = data else {
+                return
+            }
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+            if let responseJSON = responseJSON as? [String: Any] {
+                print(responseJSON)
+            }
+        }
+        task.resume()
     }
-    */
-    
-    
 }

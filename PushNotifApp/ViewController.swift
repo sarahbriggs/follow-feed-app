@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         //declare parameter as a dictionary which contains string as key and value combination. considering inputs are valid
         let parameters = ["name": nameBox.text!, "email": emailBox.text!] as [String : Any]
         //create the url with URL
-        let url = URL(string: "http://localhost:3000/users")! //change the url
+        let url = URL(string: "https://lit-gorge-55340.herokuapp.com/users")! //change the url
         //create the session object
         let session = URLSession.shared
         //now create the URLRequest object using the url object

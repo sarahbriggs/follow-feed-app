@@ -7,18 +7,26 @@
 //
 
 import UIKit
+import Alamofire
+import PromiseKit
+
 
 class SubscribeScreenViewController: UIViewController {
+    let url = URL(string: "https://lit-gorge-55340.herokuapp.com/trader/index.json")!
     
     @IBOutlet weak var fauziaButton: UIButton!
-    
     @IBOutlet weak var tomButton: UIButton!
-    
     @IBOutlet weak var vonettaButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getAllTraders()
+            .done { json -> Void in
+                print(json)
+            }
+            .catch { error in
+                print(error.localizedDescription)
+        }
     }
     
     
@@ -65,8 +73,7 @@ class SubscribeScreenViewController: UIViewController {
         var trader_id = ""
         let parameters = ["name": traderName] as [String : Any]
         //create the url with URL
-        let url = URL(string: "http://localhost:3000/trader/index.json")! //change the url
-        //create the session object
+        
         let session = URLSession.shared
         //now create the URLRequest object using the url object
         var request = URLRequest(url: url)
@@ -99,17 +106,17 @@ class SubscribeScreenViewController: UIViewController {
         return trader_id
     }
     
-    func getAllTraders() {
-        let url = URL(string: "http://localhost:3000/trader/index.json")!
-        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
-            guard let data = data else {
-                return
-            }
-            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
-            if let responseJSON = responseJSON as? [String: Any] {
-                print(responseJSON)
+    func getAllTraders() -> Promise<[[String: Any]]> {
+        return Promise { promise in
+            Alamofire.request (url, method: .get)
+            .responseJSON { response in
+                switch response.result {
+                case .success(let json):
+                    promise.fulfill(json as! [[String : Any]])
+                case .failure(let error):
+                    promise.reject(error)
+                }
             }
         }
-        task.resume()
     }
 }

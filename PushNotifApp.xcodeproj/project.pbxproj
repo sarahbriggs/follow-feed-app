@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,10 +13,12 @@
 		4910CC9D22DF936300711956 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4910CC9C22DF936300711956 /* Assets.xcassets */; };
 		4910CCA022DF936300711956 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4910CC9E22DF936300711956 /* LaunchScreen.storyboard */; };
 		49F7136622E24B4900D50494 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F7136522E24B4900D50494 /* LoginViewController.swift */; };
+		626C5C538382069E8750C744 /* Pods_PushNotifApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B22527EC06BC484BFFD4536 /* Pods_PushNotifApp.framework */; };
 		9AFA3B8122E24E84007C6AF7 /* SubscribeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFA3B8022E24E84007C6AF7 /* SubscribeScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B22527EC06BC484BFFD4536 /* Pods_PushNotifApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PushNotifApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4910CC9022DF936100711956 /* PushNotifApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PushNotifApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4910CC9322DF936100711956 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4910CC9722DF936100711956 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,8 +26,11 @@
 		4910CC9C22DF936300711956 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4910CC9F22DF936300711956 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4910CCA122DF936300711956 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4938DB3A22E75121001092B7 /* PushNotifApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PushNotifApp.entitlements; sourceTree = "<group>"; };
 		49F7136522E24B4900D50494 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9AFA3B8022E24E84007C6AF7 /* SubscribeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeScreenViewController.swift; sourceTree = "<group>"; };
+		A3253282851F3F6F99565792 /* Pods-PushNotifApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PushNotifApp.debug.xcconfig"; path = "Target Support Files/Pods-PushNotifApp/Pods-PushNotifApp.debug.xcconfig"; sourceTree = "<group>"; };
+		BBF9D62F5D07C5FC546D6A89 /* Pods-PushNotifApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PushNotifApp.release.xcconfig"; path = "Target Support Files/Pods-PushNotifApp/Pods-PushNotifApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +38,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				626C5C538382069E8750C744 /* Pods_PushNotifApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		46D57CA393722AF80A44E186 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A3253282851F3F6F99565792 /* Pods-PushNotifApp.debug.xcconfig */,
+				BBF9D62F5D07C5FC546D6A89 /* Pods-PushNotifApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		4910CC8722DF936100711956 = {
 			isa = PBXGroup;
 			children = (
 				4910CC9222DF936100711956 /* PushNotifApp */,
 				4910CC9122DF936100711956 /* Products */,
+				46D57CA393722AF80A44E186 /* Pods */,
+				BE5E7EF0C91738A204DA75BA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +75,7 @@
 		4910CC9222DF936100711956 /* PushNotifApp */ = {
 			isa = PBXGroup;
 			children = (
+				4938DB3A22E75121001092B7 /* PushNotifApp.entitlements */,
 				4910CC9322DF936100711956 /* AppDelegate.swift */,
 				4910CC9722DF936100711956 /* ViewController.swift */,
 				4910CC9922DF936100711956 /* Main.storyboard */,
@@ -70,6 +88,14 @@
 			path = PushNotifApp;
 			sourceTree = "<group>";
 		};
+		BE5E7EF0C91738A204DA75BA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3B22527EC06BC484BFFD4536 /* Pods_PushNotifApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -77,9 +103,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4910CCA422DF936300711956 /* Build configuration list for PBXNativeTarget "PushNotifApp" */;
 			buildPhases = (
+				891AF584665B56F52E3AC968 /* [CP] Check Pods Manifest.lock */,
 				4910CC8C22DF936100711956 /* Sources */,
 				4910CC8D22DF936100711956 /* Frameworks */,
 				4910CC8E22DF936100711956 /* Resources */,
+				1AB50166B807F55B617E6787 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -102,6 +130,11 @@
 				TargetAttributes = {
 					4910CC8F22DF936100711956 = {
 						CreatedOnToolsVersion = 11.0;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -135,6 +168,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1AB50166B807F55B617E6787 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PushNotifApp/Pods-PushNotifApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PushNotifApp/Pods-PushNotifApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PushNotifApp/Pods-PushNotifApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		891AF584665B56F52E3AC968 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PushNotifApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4910CC8C22DF936100711956 /* Sources */ = {
@@ -286,18 +361,22 @@
 		};
 		4910CCA522DF936300711956 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3253282851F3F6F99565792 /* Pods-PushNotifApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PushNotifApp/PushNotifApp.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5DNRYCVMX9;
+				DEVELOPMENT_TEAM = 3993H78KHE;
 				INFOPLIST_FILE = PushNotifApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = CB.PushNotifApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tastytrade.pushnotifs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -305,18 +384,22 @@
 		};
 		4910CCA622DF936300711956 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BBF9D62F5D07C5FC546D6A89 /* Pods-PushNotifApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PushNotifApp/PushNotifApp.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5DNRYCVMX9;
+				DEVELOPMENT_TEAM = 3993H78KHE;
 				INFOPLIST_FILE = PushNotifApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = CB.PushNotifApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tastytrade.pushnotifs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -24,7 +24,7 @@ class LoginViewController: UIViewController {
         }
         let parameters = ["email": emailBox.text!] as [String : Any]
         //create the url with URL
-        let url = URL(string: "http://localhost:3000/sessions")! //change the url
+        let url = URL(string: "https://lit-gorge-55340.herokuapp.com/sessions")! //change the url
         //create the session object
         let session = URLSession.shared
         //now create the URLRequest object using the url object
@@ -50,6 +50,7 @@ class LoginViewController: UIViewController {
             if let responseJSON = responseJSON as? [String: Any] {
                 if !responseJSON.isEmpty {
                     let user_id = responseJSON["user_id"]
+                    print(user_id)
                     DispatchQueue.main.async{
                         UserDefaults.standard.set(user_id, forKey: "user_id")
                         self.performSegue(withIdentifier: "loginSuccess", sender: self)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="213-bu-gQ9">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -54,14 +54,14 @@
                     </view>
                     <connections>
                         <outlet property="emailBox" destination="wqd-1c-YFE" id="TeV-1z-Bur"/>
-                        <segue destination="As8-yd-9kW" kind="show" identifier="loginSuccess" id="7Dc-fD-rX0"/>
+                        <segue destination="As8-yd-9kW" kind="show" identifier="loginSuccess" id="Fr5-uy-fNa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TKu-hi-i9h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="970"/>
+            <point key="canvasLocation" x="2320.8000000000002" y="112.89355322338831"/>
         </scene>
-        <!--Subscribe Screen View Controller-->
+        <!--Subscribe to Traders-->
         <scene sceneID="ots-AL-69Z">
             <objects>
                 <viewController id="As8-yd-9kW" customClass="SubscribeScreenViewController" customModule="PushNotifApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -69,42 +69,70 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yMp-KD-fvY">
-                                <rect key="frame" x="281" y="100" width="44" height="30"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="io2-xM-Vt2">
+                                <rect key="frame" x="0.0" y="0.0" width="160.5" height="20.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Fauzia"/>
-                                <connections>
-                                    <action selector="subscribeToFauzia:" destination="As8-yd-9kW" eventType="touchUpInside" id="Qcg-Zt-8KY"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wts-tH-o48">
-                                <rect key="frame" x="288" y="242" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Tom"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wir-V7-lhG">
-                                <rect key="frame" x="276" y="381" width="54" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Vonetta"/>
-                            </button>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="FXi-kg-JEj"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Subscribe to Traders" id="Ox8-Oo-JUK"/>
                     <connections>
-                        <outlet property="fauziaButton" destination="yMp-KD-fvY" id="Jr7-rU-VZk"/>
-                        <outlet property="tomButton" destination="Wts-tH-o48" id="AZG-sA-F0a"/>
-                        <outlet property="vonettaButton" destination="Wir-V7-lhG" id="GwM-Lh-bAA"/>
+                        <outlet property="stackView" destination="io2-xM-Vt2" id="fFG-hN-TWw"/>
+                        <segue destination="EfT-tQ-B6Y" kind="show" identifier="traderClicked" id="1dF-LS-Gqi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="18Q-gU-Y6F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="1809.4452773613195"/>
+            <point key="canvasLocation" x="3000.8000000000002" y="112.89355322338831"/>
         </scene>
-        <!--View Controller-->
+        <!--Confirmed Sub View Controller-->
+        <scene sceneID="czj-Rr-wOq">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d0j-QU-el1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="EfT-tQ-B6Y" customClass="ConfirmedSubViewController" customModule="PushNotifApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NnP-w6-L1h">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0Ki-F3-dxo">
+                                <rect key="frame" x="94" y="309" width="187.5" height="49"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have subscribed to: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ImA-WL-Nw1">
+                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vonetta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ciV-zs-8B0">
+                                        <rect key="frame" x="64" y="28.5" width="59.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0Ki-F3-dxo" firstAttribute="centerY" secondItem="NnP-w6-L1h" secondAttribute="centerY" id="DH0-3d-Vpv"/>
+                            <constraint firstItem="0Ki-F3-dxo" firstAttribute="centerX" secondItem="NnP-w6-L1h" secondAttribute="centerX" id="ZEP-hP-zWm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="SvH-Rm-bYL"/>
+                    </view>
+                    <connections>
+                        <outlet property="confirmLabel" destination="ImA-WL-Nw1" id="oHS-hc-RWS"/>
+                        <outlet property="traderLabel" destination="ciV-zs-8B0" id="Thb-zg-Ml6"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="3648.8000000000002" y="112.89355322338831"/>
+        </scene>
+        <!--Signup View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PushNotifApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="SignupViewController" customModule="PushNotifApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -133,13 +161,14 @@
                                         <state key="normal" title="Go"/>
                                         <connections>
                                             <action selector="goClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="H6G-Nu-VLF"/>
+                                            <segue destination="As8-yd-9kW" kind="show" identifier="signupSuccess" id="jsF-8Z-9YB"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0yk-Xs-QGG">
                                         <rect key="frame" x="0.0" y="142.5" width="200" height="30"/>
                                         <state key="normal" title="(or, log in!)"/>
                                         <connections>
-                                            <segue destination="TAv-ec-dCw" kind="show" id="lNS-jh-GDt"/>
+                                            <segue destination="TAv-ec-dCw" kind="show" identifier="" id="lNS-jh-GDt"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -155,6 +184,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="VhK-V6-Wmh"/>
                     <connections>
                         <outlet property="emailBox" destination="TMk-nB-TrK" id="7tj-sK-DhO"/>
                         <outlet property="label" destination="bva-LH-Dvt" id="UFX-TY-LSS"/>
@@ -163,7 +193,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="112.89355322338831"/>
+            <point key="canvasLocation" x="1652" y="112.89355322338831"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="GoS-lM-l6e">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="213-bu-gQ9" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6ip-KA-scF">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="3L0-TV-J0p"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jl7-K7-hmD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="967" y="113"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="jsF-8Z-9YB"/>
+    </inferredMetricsTieBreakers>
 </document>

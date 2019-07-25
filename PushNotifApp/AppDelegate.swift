@@ -10,41 +10,16 @@ import UIKit
 import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     
     var window: UIWindow?
     
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        if #available(iOS 10, *) {
-            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
-                
-                guard error == nil else {
-                    //Display Error.. Handle Error.. etc..
-                    return
-                }
-                
-                if granted {
-                    //Do stuff here..
-                    
-                    //Register for RemoteNotifications. Your Remote Notifications can display alerts now :)
-                    DispatchQueue.main.async {
-                        application.registerForRemoteNotifications()
-                    }
-                }
-                else {
-                    //Handle user denying permissions..
-                }
-            }
-            
-            //Register for remote notifications.. If permission above is NOT granted, all notifications are delivered silently to AppDelegate.
-            application.registerForRemoteNotifications()
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
+            // Enable or disable features based on authorization.
         }
-        else {
-            let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-            application.registerUserNotificationSettings(settings)
-            application.registerForRemoteNotifications()
-        }
+        application.registerForRemoteNotifications()
         return true
     }
     
@@ -70,6 +45,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let deviceTokenString = deviceToken.hexString
+        UserDefaults.standard.set(deviceTokenString, forKey: "APNSToken")
+    }
+    
     
 }
 
+extension Data {
+    var hexString: String {
+        let hexString = map { String(format: "%02.2hhx", $0) }.joined()
+        return hexString
+    }
+}

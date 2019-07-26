@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4906D69522EB54DF004AABB4 /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4906D69422EB54DF004AABB4 /* AdminViewController.swift */; };
 		4910CC9422DF936100711956 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4910CC9322DF936100711956 /* AppDelegate.swift */; };
 		4910CC9822DF936100711956 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4910CC9722DF936100711956 /* SignupViewController.swift */; };
 		4910CC9B22DF936100711956 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4910CC9922DF936100711956 /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		3B22527EC06BC484BFFD4536 /* Pods_PushNotifApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PushNotifApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4906D69422EB54DF004AABB4 /* AdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
 		4910CC9022DF936100711956 /* PushNotifApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PushNotifApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4910CC9322DF936100711956 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4910CC9722DF936100711956 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 		492C41AD22E8B60C00FFACCB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				4906D69422EB54DF004AABB4 /* AdminViewController.swift */,
 				49F7136522E24B4900D50494 /* LoginViewController.swift */,
 				9AFA3B8022E24E84007C6AF7 /* SubscribeScreenViewController.swift */,
 				492C41AB22E8B60600FFACCB /* ConfirmedSubViewController.swift */,
@@ -234,6 +237,7 @@
 				49F7136622E24B4900D50494 /* LoginViewController.swift in Sources */,
 				4910CC9822DF936100711956 /* SignupViewController.swift in Sources */,
 				492C41AC22E8B60600FFACCB /* ConfirmedSubViewController.swift in Sources */,
+				4906D69522EB54DF004AABB4 /* AdminViewController.swift in Sources */,
 				4910CC9422DF936100711956 /* AppDelegate.swift in Sources */,
 				9AFA3B8122E24E84007C6AF7 /* SubscribeScreenViewController.swift in Sources */,
 			);

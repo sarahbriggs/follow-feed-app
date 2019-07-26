@@ -11,19 +11,25 @@ import Alamofire
 import PromiseKit
 import UserNotifications
 
-class SubscribeScreenViewController: UIViewController {
+class SubscribeScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     //MARK: - Properties
+    @IBOutlet weak var popOver: UIView!
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var stackView: UIStackView!
     let tradersUrl = "/trader.json"
     let subscriptionsUrl = "/subscription.json"
-    var nameToId = [String:Int]()
+    var allTraders = [String]()
+    var allTraderIds = [Int]()
     var currentSubs = [Int]()
     let userId = UserDefaults.standard.string(forKey: "user_id")!
     
     //MARK: - Functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        popOver.isHidden = true
+        tableView.dataSource = self
+        tableView.delegate = self
         configureStackView()
     }
     
@@ -33,34 +39,26 @@ class SubscribeScreenViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "traderClicked" {
-            let buttonSender = sender as! UIButton
-            let name = buttonSender.titleLabel?.text
-            let id = nameToId[name!]
-            let vc = segue.destination as! ConfirmedSubViewController
-            vc.traderId = id
-            vc.traderName = name
+//            let buttonSender = sender as! UIButton
+//            let name = buttonSender.titleLabel?.text
+//            let id = nameToId[name!]
+//            let vc = segue.destination as! ConfirmedSubViewController
+//            vc.traderId = id
+//            vc.traderName = name
         }
     }
     
     func getAllTraders() {
-        stackView.removeAllArrangedSubviews()
+        allTraders.removeAll()
         apiGetAllTraders()
             .done { json -> Void in
-                var index = 0
                 for dict in json {
                     let name = dict["name"] as! String
                     let id = dict["id"] as! Int
-                    let button = self.colorButton(withColor: UIColor.white, title: name)
-                    if self.currentSubs.contains(id) {
-                        button.isEnabled = false
-                    }
-                    else {
-                        button.isEnabled = true
-                    }
-                    self.nameToId[name] = id
-                    self.stackView.insertArrangedSubview(button, at: index)
-                    index = index + 1
+                    self.allTraders.append(name)
+                    self.allTraderIds.append(id)
                 }
+                self.tableView.reloadData()
             }
             .catch { error in
                 print(error.localizedDescription)
@@ -72,6 +70,7 @@ class SubscribeScreenViewController: UIViewController {
         apiGetAllSubs()
             .done { json -> Void in
                 for dict in json {
+                    print(dict)
                     self.currentSubs.append(dict["trader_id"] as! Int)
                 }
                 self.getAllTraders()
@@ -79,16 +78,6 @@ class SubscribeScreenViewController: UIViewController {
             .catch { error in
                 print(error.localizedDescription)
             }
-    }
-    
-    func colorButton(withColor color:UIColor, title:String) -> UIButton {
-        let newButton = UIButton(type: .system)
-        newButton.backgroundColor = color
-        newButton.setTitle(title, for: .normal)
-        newButton.translatesAutoresizingMaskIntoConstraints = false
-        newButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        newButton.addTarget(self, action: #selector(self.buttonAction), for: .touchUpInside)
-        return newButton
     }
     
     func configureStackView() {
@@ -128,10 +117,28 @@ class SubscribeScreenViewController: UIViewController {
         }
     }
     
-    //MARK: - Actions
-    @objc
-    func buttonAction(sender: UIButton!) {
-        self.performSegue(withIdentifier: "traderClicked", sender: sender)
+    //MARK: - Tableview funcs
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return allTraders.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SubscriptionCell")
+        cell?.textLabel?.text = allTraders[indexPath.row]
+        if currentSubs.contains(allTraderIds[indexPath.row]) {
+            cell?.detailTextLabel?.text = "Subscribed"
+        }
+        else {
+            cell?.detailTextLabel?.text = "Not Subscribed"
+        }
+        return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        popOver.isHidden = false
+        // here, we check if the selected trader (id) is contained in current subs... if so:
+        // label says "Unsubscribe?" and unsubscribes
+        // if not:
     }
 
 }

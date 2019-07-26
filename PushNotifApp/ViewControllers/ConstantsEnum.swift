@@ -8,5 +8,5 @@
 
 import Foundation
 enum ConstantsEnum {
-    static let baseUrl = "https://lit-gorge-55340.herokuapp.com"
+    static let baseUrl = "https://powerful-journey-91657.herokuapp.com/"
 }

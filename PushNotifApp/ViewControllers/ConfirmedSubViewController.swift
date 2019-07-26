@@ -30,8 +30,9 @@ class ConfirmedSubViewController: UIViewController {
     func subscribe() {
         apiSubscribe()
             .done { json -> Void in
-                if !json.isEmpty { // on success, we get the subscription ID back
-                    // what should we do here... ?
+                if !json.isEmpty { // on success, we get the subscription ARN back
+                    print("Subscribed")
+                    print(json["subscription_arn"]!)
                 }
             }
             .catch { error in

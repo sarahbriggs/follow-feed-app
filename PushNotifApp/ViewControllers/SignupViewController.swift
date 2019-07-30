@@ -16,7 +16,6 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var emailBox: UITextField!
     @IBOutlet weak var nameBox: UITextField!
-    let signupUrl = "/users"
     
     //MARK: - Functions
     override func viewDidLoad() {
@@ -39,7 +38,7 @@ class SignupViewController: UIViewController {
     
     // MARK: - API Calls
     func apiSignup() -> Promise<[String: Any]> {
-        let url = URL(string: ConstantsEnum.baseUrl+signupUrl)!
+        let url = URL(string: ConstantsEnum.baseUrl+ConstantsEnum.signupUrl)!
         return Promise { promise in
             Alamofire.request (url, method: .post, parameters: ["name": nameBox.text!, "email": emailBox.text!])
                 .responseJSON { response in

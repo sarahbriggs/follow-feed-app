@@ -16,7 +16,6 @@ class AdminViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var popOver: UIView!
-    let tradersUrl = "/trader.json"
     var allTraders = [String]()
     var allTraderIds = [Int]()
     var deleteThisTrader = -1
@@ -77,7 +76,7 @@ class AdminViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     // MARK: - API Calls
     func apiGetAllTraders() -> Promise<[[String: Any]]> {
-        let url = URL(string: ConstantsEnum.baseUrl+tradersUrl)!
+        let url = URL(string: ConstantsEnum.baseUrl+ConstantsEnum.tradersUrl)!
         return Promise { promise in
             Alamofire.request (url, method: .get)
                 .responseJSON { response in
@@ -92,7 +91,7 @@ class AdminViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func apiPostNewTrader() -> Promise<[String: Any]> {
-        let url = URL(string: ConstantsEnum.baseUrl+tradersUrl)!
+        let url = URL(string: ConstantsEnum.baseUrl+ConstantsEnum.tradersUrl)!
         return Promise { promise in
             Alamofire.request (url, method: .post, parameters: ["name":nameField.text!])
                 .responseJSON { response in
@@ -107,7 +106,7 @@ class AdminViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func apiDeleteTrader() -> Promise<[String: Any]> {
-        let url = URL(string: ConstantsEnum.baseUrl+tradersUrl)!
+        let url = URL(string: ConstantsEnum.baseUrl+ConstantsEnum.tradersUrl)!
         return Promise { promise in
             Alamofire.request (url, method: .delete, parameters: ["id":deleteThisTrader])
                 .responseJSON { response in

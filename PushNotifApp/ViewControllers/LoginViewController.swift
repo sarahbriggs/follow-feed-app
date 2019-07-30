@@ -14,7 +14,6 @@ class LoginViewController: UIViewController {
 
     //MARK: - Properties
     @IBOutlet weak var emailBox: UITextField!
-    let LOGIN_URL = "/sessions"
     
     //MARK: - Functions
     override func viewDidLoad() {
@@ -27,6 +26,21 @@ class LoginViewController: UIViewController {
                 if !json.isEmpty {
                     let userId = json["user_id"]
                     UserDefaults.standard.set(userId, forKey: "user_id")
+                    self.postDevice()
+                }
+            }
+            .catch { error in
+                print(error.localizedDescription)
+        }
+    }
+    
+    func postDevice() {
+        print("posting device...")
+        print(UserDefaults.standard.string(forKey: "APNSToken")!)
+        apiPostDevice()
+            .done { json -> Void in
+                if !json.isEmpty {
+                    print(json)
                     self.performSegue(withIdentifier: "loginSuccess", sender: self)
                 }
             }
@@ -37,9 +51,26 @@ class LoginViewController: UIViewController {
     
     // MARK: - API Calls
     func apiLogin() -> Promise<[String: Any]> {
-        let url = URL(string: ConstantsEnum.baseUrl+LOGIN_URL)!
+        let url = URL(string: ConstantsEnum.baseUrl+ConstantsEnum.loginUrl)!
         return Promise { promise in
             Alamofire.request (url, method: .post, parameters: ["email": emailBox.text!])
+                .responseJSON { response in
+                    switch response.result {
+                    case .success(let json):
+                        promise.fulfill(json as! [String : Any])
+                    case .failure(let error):
+                        promise.reject(error)
+                    }
+            }
+        }
+    }
+    
+    func apiPostDevice() -> Promise<[String: Any]> {
+        let url = URL(string: ConstantsEnum.baseUrl+ConstantsEnum.deviceUrl)!
+        return Promise { promise in
+            Alamofire.request (url, method: .post, parameters: ["token": UserDefaults.standard.string(forKey: "APNSToken")!,
+                                                                "user_id": UserDefaults.standard.string(forKey: "user_id")!,
+                                                                "platform": "APNS_SANDBOX"])
                 .responseJSON { response in
                     switch response.result {
                     case .success(let json):

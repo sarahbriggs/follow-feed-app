@@ -14,15 +14,18 @@ import UserNotifications
 class SubscribeScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     //MARK: - Properties
+    
+    @IBOutlet weak var unsubscibeButton: UIButton!
+    @IBOutlet weak var subscribeButton: UIButton!
+    @IBOutlet weak var subscribeLabel: UILabel!
+    @IBOutlet weak var traderLabel: UILabel!
     @IBOutlet weak var popOver: UIView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var stackView: UIStackView!
-    let tradersUrl = "/trader.json"
-    let subscriptionsUrl = "/subscription.json"
     var allTraders = [String]()
     var allTraderIds = [Int]()
     var currentSubs = [Int]()
     let userId = UserDefaults.standard.string(forKey: "user_id")!
+    var traderId = -1
     
     //MARK: - Functions
     override func viewDidLoad() {
@@ -30,22 +33,10 @@ class SubscribeScreenViewController: UIViewController, UITableViewDelegate, UITa
         popOver.isHidden = true
         tableView.dataSource = self
         tableView.delegate = self
-        configureStackView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         getAllSubs()
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "traderClicked" {
-//            let buttonSender = sender as! UIButton
-//            let name = buttonSender.titleLabel?.text
-//            let id = nameToId[name!]
-//            let vc = segue.destination as! ConfirmedSubViewController
-//            vc.traderId = id
-//            vc.traderName = name
-        }
     }
     
     func getAllTraders() {
@@ -80,15 +71,23 @@ class SubscribeScreenViewController: UIViewController, UITableViewDelegate, UITa
             }
     }
     
-    func configureStackView() {
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        stackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+    func subscribe() {
+        apiSubscribe()
+            .done { json -> Void in
+                if !json.isEmpty { // on success, we get the subscription ARN back
+                    print("Subscribed")
+                    print(json["subscription_arn"]!)
+                    self.getAllSubs()
+                }
+            }
+            .catch { error in
+                print(error.localizedDescription)
+        }
     }
     
     // MARK: - API Calls
     func apiGetAllTraders() -> Promise<[[String: Any]]> {
-        let url = URL(string: ConstantsEnum.baseUrl+tradersUrl)!
+        let url = URL(string: ConstantsEnum.baseUrl+ConstantsEnum.tradersUrl)!
         return Promise { promise in
             Alamofire.request (url, method: .get)
                 .responseJSON { response in
@@ -103,13 +102,28 @@ class SubscribeScreenViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     func apiGetAllSubs() -> Promise<[[String: Any]]> {
-        let url = URL(string: ConstantsEnum.baseUrl+subscriptionsUrl)!
+        let url = URL(string: ConstantsEnum.baseUrl+ConstantsEnum.subscriptionsUrl)!
         return Promise { promise in
             Alamofire.request (url, method: .get, parameters: ["id":userId])
                 .responseJSON { response in
                     switch response.result {
                     case .success(let json):
                         promise.fulfill(json as! [[String : Any]])
+                    case .failure(let error):
+                        promise.reject(error)
+                    }
+            }
+        }
+    }
+    
+    func apiSubscribe() -> Promise<[String: Any]> {
+        let url = URL(string: ConstantsEnum.baseUrl+ConstantsEnum.subscribeUrl)!
+        return Promise { promise in
+            Alamofire.request (url, method: .post, parameters: ["trader_id": traderId, "user_id": userId]) // include device token here, string
+                .responseJSON { response in
+                    switch response.result {
+                    case .success(let json):
+                        promise.fulfill(json as! [String : Any])
                     case .failure(let error):
                         promise.reject(error)
                     }
@@ -136,11 +150,36 @@ class SubscribeScreenViewController: UIViewController, UITableViewDelegate, UITa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         popOver.isHidden = false
-        // here, we check if the selected trader (id) is contained in current subs... if so:
-        // label says "Unsubscribe?" and unsubscribes
-        // if not:
+        traderLabel.text = allTraders[indexPath.row] + "?"
+        traderId = allTraderIds[indexPath.row]
+        if currentSubs.contains(allTraderIds[indexPath.row]) { // allow unsubscribe
+            subscribeLabel.text = "Unsubscribe from:"
+            subscribeButton.isHidden = true
+            unsubscibeButton.isHidden = false
+        }
+        else { // allow subscribe
+            subscribeLabel.text = "Subscribe to:"
+            subscribeButton.isHidden = false
+            unsubscibeButton.isHidden = true
+        }
     }
 
+    //MARK: Actions
+    @IBAction func subscribeClicked(_ sender: Any) {
+        subscribe()
+        popOver.isHidden = true
+    }
+    
+    @IBAction func unsubscribeClicked(_ sender: Any) {
+    }
+    
+    @IBAction func cancelClicked(_ sender: Any) {
+        popOver.isHidden = true
+    }
+    @IBAction func logoutClicked(_ sender: Any) {
+        UserDefaults.standard.set(nil, forKey: "user_id")
+        self.performSegue(withIdentifier: "logout", sender: self)
+    }
 }
 
 //MARK: - Extensions

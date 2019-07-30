@@ -81,9 +81,10 @@
 		4910CC9222DF936100711956 /* PushNotifApp */ = {
 			isa = PBXGroup;
 			children = (
-				492C41AE22EA091D00FFACCB /* ConstantsEnum.swift */,
 				492C41AD22E8B60C00FFACCB /* ViewControllers */,
 				4938DB3A22E75121001092B7 /* PushNotifApp.entitlements */,
+				492C41AB22E8B60600FFACCB /* ConfirmedSubViewController.swift */,
+				492C41AE22EA091D00FFACCB /* ConstantsEnum.swift */,
 				4910CC9322DF936100711956 /* AppDelegate.swift */,
 				4910CC9922DF936100711956 /* Main.storyboard */,
 				4910CC9C22DF936300711956 /* Assets.xcassets */,
@@ -99,7 +100,6 @@
 				4906D69422EB54DF004AABB4 /* AdminViewController.swift */,
 				49F7136522E24B4900D50494 /* LoginViewController.swift */,
 				9AFA3B8022E24E84007C6AF7 /* SubscribeScreenViewController.swift */,
-				492C41AB22E8B60600FFACCB /* ConfirmedSubViewController.swift */,
 				4910CC9722DF936100711956 /* SignupViewController.swift */,
 			);
 			path = ViewControllers;

@@ -17,7 +17,6 @@ class ConfirmedSubViewController: UIViewController {
     @IBOutlet weak var traderLabel: UILabel!
     var traderId: Int!
     var traderName: String!
-    let subscribeUrl = "/subscription"
     let userId = UserDefaults.standard.string(forKey: "user_id")!
 
     //MARK: - Functions
@@ -42,7 +41,7 @@ class ConfirmedSubViewController: UIViewController {
     
     // MARK: - API Calls
     func apiSubscribe() -> Promise<[String: Any]> {
-        let url = URL(string: ConstantsEnum.baseUrl+subscribeUrl)!
+        let url = URL(string: ConstantsEnum.baseUrl+ConstantsEnum.subscribeUrl)!
         return Promise { promise in
             Alamofire.request (url, method: .post, parameters: ["trader_id": traderId!, "user_id": userId])
                 .responseJSON { response in

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="213-bu-gQ9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -59,20 +59,16 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TKu-hi-i9h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2320.8000000000002" y="112.89355322338831"/>
+            <point key="canvasLocation" x="2132" y="113"/>
         </scene>
-        <!--Subscribe to Traders-->
+        <!--SubscribeScreen-->
         <scene sceneID="ots-AL-69Z">
             <objects>
-                <viewController id="As8-yd-9kW" customClass="SubscribeScreenViewController" customModule="PushNotifApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SubscribeScreen" title="SubscribeScreen" id="As8-yd-9kW" customClass="SubscribeScreenViewController" customModule="PushNotifApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qe4-Ct-yU2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="io2-xM-Vt2">
-                                <rect key="frame" x="0.0" y="0.0" width="160.5" height="20.5"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1wA-fo-qlf">
                                 <rect key="frame" x="67.5" y="133.5" width="240" height="400"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -108,13 +104,83 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="grN-HP-FYc">
-                                <rect key="frame" x="57.5" y="258.5" width="260" height="150"/>
+                                <rect key="frame" x="37.5" y="258.5" width="300" height="150"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fsk-gd-1tZ">
+                                        <rect key="frame" x="20" y="20" width="260" height="110"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subscribe to:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Iq-jD-2at">
+                                                <rect key="frame" x="0.0" y="0.0" width="101.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tom?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zOw-2I-F8T">
+                                                <rect key="frame" x="0.0" y="28.5" width="41.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="Nwb-ke-m1h">
+                                                <rect key="frame" x="0.0" y="57" width="232" height="53"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBz-6m-GaU">
+                                                        <rect key="frame" x="0.0" y="0.0" width="69" height="53"/>
+                                                        <state key="normal" title="Subscribe"/>
+                                                        <connections>
+                                                            <action selector="subscribeClicked:" destination="As8-yd-9kW" eventType="touchUpInside" id="Bxy-Zd-Fmo"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Hg-c0-edq">
+                                                        <rect key="frame" x="83" y="0.0" width="87" height="53"/>
+                                                        <state key="normal" title="Unsubscribe"/>
+                                                        <connections>
+                                                            <action selector="unsubscribeClicked:" destination="As8-yd-9kW" eventType="touchUpInside" id="DhO-Gp-0As"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L3b-ND-EEb">
+                                                        <rect key="frame" x="184" y="0.0" width="48" height="53"/>
+                                                        <state key="normal" title="Cancel"/>
+                                                        <connections>
+                                                            <action selector="cancelClicked:" destination="As8-yd-9kW" eventType="touchUpInside" id="Yut-Ic-wnm"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="260" id="022-qk-Ua1"/>
+                                    <constraint firstAttribute="width" constant="300" id="022-qk-Ua1"/>
                                     <constraint firstAttribute="height" constant="150" id="BeO-q7-Y0F"/>
+                                    <constraint firstItem="fsk-gd-1tZ" firstAttribute="leading" secondItem="grN-HP-FYc" secondAttribute="leading" constant="20" id="K8c-fu-MZm"/>
+                                    <constraint firstAttribute="bottom" secondItem="fsk-gd-1tZ" secondAttribute="bottom" constant="20" id="XQh-Z1-89p"/>
+                                    <constraint firstAttribute="trailing" secondItem="fsk-gd-1tZ" secondAttribute="trailing" constant="20" id="Z5m-zH-tdB"/>
+                                    <constraint firstItem="fsk-gd-1tZ" firstAttribute="top" secondItem="grN-HP-FYc" secondAttribute="top" constant="20" id="aL4-1a-yG0"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="9"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rj4-2x-Ebe">
+                                <rect key="frame" x="0.0" y="637" width="44" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Admin"/>
+                                <connections>
+                                    <segue destination="Bps-qI-v89" kind="show" id="9xx-wC-lsx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gC4-Yl-tzh">
+                                <rect key="frame" x="328" y="637" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logoutClicked:" destination="As8-yd-9kW" eventType="touchUpInside" id="faC-ig-vWs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -128,9 +194,13 @@
                     <navigationItem key="navigationItem" title="Subscribe to Traders" id="Ox8-Oo-JUK"/>
                     <connections>
                         <outlet property="popOver" destination="grN-HP-FYc" id="Vmg-Bh-9VS"/>
-                        <outlet property="stackView" destination="io2-xM-Vt2" id="fFG-hN-TWw"/>
+                        <outlet property="subscribeButton" destination="OBz-6m-GaU" id="hsf-NP-6lb"/>
+                        <outlet property="subscribeLabel" destination="9Iq-jD-2at" id="0kX-W8-bcC"/>
                         <outlet property="tableView" destination="1wA-fo-qlf" id="0PJ-Q1-j80"/>
+                        <outlet property="traderLabel" destination="zOw-2I-F8T" id="bAZ-dA-hMa"/>
+                        <outlet property="unsubscibeButton" destination="8Hg-c0-edq" id="TvW-F7-nsH"/>
                         <segue destination="EfT-tQ-B6Y" kind="show" identifier="traderClicked" id="1dF-LS-Gqi"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="logout" id="YJG-Oq-4dR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="18Q-gU-Y6F" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -177,7 +247,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d0j-QU-el1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3648.8000000000002" y="112.89355322338831"/>
+            <point key="canvasLocation" x="3758" y="113"/>
         </scene>
         <!--Signup View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -225,20 +295,11 @@
                                     <constraint firstAttribute="width" constant="200" id="u9m-QV-5Bf"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rj4-2x-Ebe">
-                                <rect key="frame" x="3" y="640" width="44" height="30"/>
-                                <state key="normal" title="Admin"/>
-                                <connections>
-                                    <segue destination="Bps-qI-v89" kind="show" id="9xx-wC-lsx"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Rj4-2x-Ebe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="3" id="4m4-ku-r6S"/>
                             <constraint firstItem="bcw-Q3-OLb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="a21-Tn-sXO"/>
                             <constraint firstItem="bcw-Q3-OLb" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="nkE-4c-1B2"/>
-                            <constraint firstItem="Rj4-2x-Ebe" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="3" id="zmw-Re-AVH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -252,25 +313,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1652" y="112.89355322338831"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="GoS-lM-l6e">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="213-bu-gQ9" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6ip-KA-scF">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="3L0-TV-J0p"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Jl7-K7-hmD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="967" y="113"/>
+            <point key="canvasLocation" x="1258" y="113"/>
         </scene>
         <!--Admin View Controller-->
         <scene sceneID="MfF-Id-fXb">
@@ -332,7 +375,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All traders:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U0q-zn-8FV">
-                                <rect key="frame" x="146" y="94" width="83" height="20.5"/>
+                                <rect key="frame" x="146" y="50" width="83" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -405,7 +448,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f86-M6-Mi9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1652" y="866"/>
+            <point key="canvasLocation" x="3001" y="869"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

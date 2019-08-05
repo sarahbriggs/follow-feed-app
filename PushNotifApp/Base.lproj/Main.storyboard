@@ -383,28 +383,34 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nQZ-H5-3GV">
                                 <rect key="frame" x="57.5" y="258.5" width="260" height="150"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="eEJ-TZ-TCp">
-                                        <rect key="frame" x="58.5" y="48.5" width="141.5" height="52.5"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="eEJ-TZ-TCp">
+                                        <rect key="frame" x="26.5" y="49" width="207" height="52.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete this trader?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ins-Yw-pjb">
-                                                <rect key="frame" x="0.0" y="0.0" width="141.5" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trader: Tom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ins-Yw-pjb">
+                                                <rect key="frame" x="57.5" y="0.0" width="92" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="i4W-8R-Fjc">
-                                                <rect key="frame" x="24.5" y="22.5" width="93" height="30"/>
+                                                <rect key="frame" x="0.0" y="22.5" width="207" height="30"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9dT-d6-WOs">
-                                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
-                                                        <state key="normal" title="Yes"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="45" height="30"/>
+                                                        <state key="normal" title="Delete"/>
                                                         <connections>
                                                             <action selector="yesClicked:" destination="Bps-qI-v89" eventType="touchUpInside" id="R0p-d3-dHO"/>
                                                         </connections>
                                                     </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Url-sj-SEH">
+                                                        <rect key="frame" x="60" y="0.0" width="84" height="30"/>
+                                                        <state key="normal" title="Publish Msg"/>
+                                                        <connections>
+                                                            <action selector="publishClicked:" destination="Bps-qI-v89" eventType="touchUpInside" id="IFU-jc-Na8"/>
+                                                        </connections>
+                                                    </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bDk-6U-6QU">
-                                                        <rect key="frame" x="45" y="0.0" width="48" height="30"/>
+                                                        <rect key="frame" x="159" y="0.0" width="48" height="30"/>
                                                         <state key="normal" title="Cancel"/>
                                                         <connections>
                                                             <action selector="cancelClicked:" destination="Bps-qI-v89" eventType="touchUpInside" id="p5c-ap-mew"/>
@@ -417,8 +423,10 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="eEJ-TZ-TCp" firstAttribute="centerY" secondItem="nQZ-H5-3GV" secondAttribute="centerY" id="1Z9-cz-8eI"/>
                                     <constraint firstAttribute="width" constant="260" id="7um-GS-JtZ"/>
                                     <constraint firstAttribute="height" constant="150" id="hFM-rL-DB9"/>
+                                    <constraint firstItem="eEJ-TZ-TCp" firstAttribute="centerX" secondItem="nQZ-H5-3GV" secondAttribute="centerX" id="huf-0k-ib3"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -452,15 +460,79 @@
                         <outlet property="deleteButton" destination="9dT-d6-WOs" id="K39-Vp-hLt"/>
                         <outlet property="nameField" destination="17h-B8-Epi" id="Coi-zV-3bT"/>
                         <outlet property="popOver" destination="nQZ-H5-3GV" id="Eae-iO-NIY"/>
+                        <outlet property="publishButton" destination="Url-sj-SEH" id="uMV-RD-Ibu"/>
                         <outlet property="tableView" destination="bxQ-1Z-oLQ" id="TfC-Ny-EHR"/>
+                        <outlet property="traderLabel" destination="ins-Yw-pjb" id="QnF-bO-s0n"/>
+                        <segue destination="Fee-BC-DyB" kind="show" identifier="publishMessage" id="cnc-Ki-q4b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f86-M6-Mi9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3001" y="869"/>
         </scene>
+        <!--Message View Controller-->
+        <scene sceneID="esi-Vs-7eC">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8y5-Hx-nzJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="Fee-BC-DyB" customClass="MessageViewController" customModule="PushNotifApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KFr-Ln-i7q">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ZTm-0G-hJK">
+                                <rect key="frame" x="62.5" y="213.5" width="250" height="240.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type Message:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wyp-s4-CtZ">
+                                        <rect key="frame" x="67.5" y="0.0" width="115.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="IdT-4A-BrR">
+                                        <rect key="frame" x="0.0" y="40.5" width="250" height="150"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="150" id="got-zW-2XN"/>
+                                            <constraint firstAttribute="width" constant="250" id="oqJ-ON-7ha"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S87-mS-Mvd">
+                                        <rect key="frame" x="107" y="210.5" width="36" height="30"/>
+                                        <state key="normal" title="Send"/>
+                                        <connections>
+                                            <action selector="sendClicked:" destination="Fee-BC-DyB" eventType="touchUpInside" id="abt-o6-pyv"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4l4-bG-QET">
+                                <rect key="frame" x="22" y="20" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="Bps-qI-v89" kind="show" id="VmF-Zl-RZP"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ZTm-0G-hJK" firstAttribute="centerX" secondItem="KFr-Ln-i7q" secondAttribute="centerX" id="Ome-5q-aRF"/>
+                            <constraint firstItem="ZTm-0G-hJK" firstAttribute="centerY" secondItem="KFr-Ln-i7q" secondAttribute="centerY" id="bRu-Lk-itw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yfG-t7-ocz"/>
+                    </view>
+                    <connections>
+                        <outlet property="textField" destination="IdT-4A-BrR" id="KkF-mY-qGK"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="3758" y="869"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="VmF-Zl-RZP"/>
         <segue reference="xfJ-kN-AkJ"/>
     </inferredMetricsTieBreakers>
 </document>

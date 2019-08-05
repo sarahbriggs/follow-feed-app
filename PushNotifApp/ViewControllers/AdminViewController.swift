@@ -14,9 +14,11 @@ class AdminViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     // MARK: - Properties
     @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var publishButton: UIButton!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var popOver: UIView!
+    @IBOutlet weak var traderLabel: UILabel!
     var allTraders = [String]()
     var allTraderIds = [Int]()
 
@@ -82,6 +84,13 @@ class AdminViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "publishMessage" {
+            let vc = segue.destination as! MessageViewController
+            vc.traderId = publishButton.tag
+        }
+    }
+    
     // MARK: - API Calls
     func apiGetAllTraders() -> Promise<[[String: Any]]> {
         let url = URL(string: ConstantsEnum.baseUrl+ConstantsEnum.tradersUrl)!
@@ -144,7 +153,9 @@ class AdminViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         popOver.isHidden = false
+        traderLabel.text = "Trader: " + allTraders[indexPath.row]
         deleteButton.tag = allTraderIds[indexPath.row]
+        publishButton.tag = allTraderIds[indexPath.row]
     }
     
     //MARK: - Actions
@@ -157,5 +168,8 @@ class AdminViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     @IBAction func yesClicked(_ sender: UIButton) {
         deleteTrader(traderId: sender.tag)
+    }
+    @IBAction func publishClicked(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "publishMessage", sender: self)
     }
 }

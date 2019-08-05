@@ -55,6 +55,15 @@ class SignupViewController: UIViewController {
     
     //MARK: - Actions
     @IBAction func goClicked(_ sender: Any) {
+        if (nameBox.text!.isEmpty || emailBox.text!.isEmpty) {
+            if nameBox.text!.isEmpty {
+                nameBox.placeholder = "Enter name"
+            }
+            if emailBox.text!.isEmpty {
+                emailBox.placeholder = "Enter email"
+            }
+            return
+        }
         signup()
     }
 }

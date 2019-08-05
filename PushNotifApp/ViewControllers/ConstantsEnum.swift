@@ -15,4 +15,5 @@ enum ConstantsEnum {
     static let deviceUrl = "/device"
     static let subscribeUrl = "/subscription"
     static let signupUrl = "/users"
+    static let messageUrl = "/trader/message"
 }

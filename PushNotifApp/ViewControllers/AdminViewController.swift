@@ -27,9 +27,8 @@ class AdminViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.dataSource = self
         tableView.delegate = self
         nameField.delegate = self
-        getAllTraders()
         popOver.isHidden = true
-//        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard)))
+        getAllTraders()
     }
     
     
@@ -49,10 +48,6 @@ class AdminViewController: UIViewController, UITableViewDataSource, UITableViewD
             .catch { error in
                 print(error.localizedDescription)
         }
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -92,6 +87,7 @@ class AdminViewController: UIViewController, UITableViewDataSource, UITableViewD
         let url = URL(string: ConstantsEnum.baseUrl+ConstantsEnum.tradersUrl)!
         return Promise { promise in
             Alamofire.request (url, method: .get)
+                .validate()
                 .responseJSON { response in
                     switch response.result {
                     case .success(let json):
@@ -107,6 +103,7 @@ class AdminViewController: UIViewController, UITableViewDataSource, UITableViewD
         let url = URL(string: ConstantsEnum.baseUrl+ConstantsEnum.tradersUrl)!
         return Promise { promise in
             Alamofire.request (url, method: .post, parameters: ["name":nameField.text!])
+                .validate()
                 .responseJSON { response in
                     switch response.result {
                     case .success(let json):
@@ -122,6 +119,7 @@ class AdminViewController: UIViewController, UITableViewDataSource, UITableViewD
         let url = URL(string: ConstantsEnum.baseUrl+ConstantsEnum.tradersUrl)!
         return Promise { promise in
             Alamofire.request (url, method: .delete, parameters: ["id":traderId])
+                .validate()
                 .responseJSON { response in
                     switch response.result {
                     case .success(let json):

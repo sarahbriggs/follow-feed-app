@@ -87,6 +87,7 @@ class SubscribeScreenViewController: UIViewController, UITableViewDelegate, UITa
         let url = URL(string: ConstantsEnum.baseUrl+ConstantsEnum.tradersUrl)!
         return Promise { promise in
             Alamofire.request (url, method: .get)
+                .validate()
                 .responseJSON { response in
                     switch response.result {
                     case .success(let json):
@@ -102,6 +103,7 @@ class SubscribeScreenViewController: UIViewController, UITableViewDelegate, UITa
         let url = URL(string: ConstantsEnum.baseUrl+ConstantsEnum.subscriptionsUrl)!
         return Promise { promise in
             Alamofire.request (url, method: .get, parameters: ["id":userId])
+                .validate()
                 .responseJSON { response in
                     switch response.result {
                     case .success(let json):
@@ -116,7 +118,8 @@ class SubscribeScreenViewController: UIViewController, UITableViewDelegate, UITa
     func apiSubscribe() -> Promise<[String: Any]> {
         let url = URL(string: ConstantsEnum.baseUrl+ConstantsEnum.subscribeUrl)!
         return Promise { promise in
-            Alamofire.request (url, method: .post, parameters: ["trader_id": traderId, "user_id": userId]) // include device token here, string
+            Alamofire.request (url, method: .post, parameters: ["trader_id": traderId, "user_id": userId])
+                .validate()
                 .responseJSON { response in
                     switch response.result {
                     case .success(let json):

@@ -41,6 +41,7 @@ class SignupViewController: UIViewController {
         let url = URL(string: ConstantsEnum.baseUrl+ConstantsEnum.signupUrl)!
         return Promise { promise in
             Alamofire.request (url, method: .post, parameters: ["name": nameBox.text!, "email": emailBox.text!])
+                .validate()
                 .responseJSON { response in
                     switch response.result {
                     case .success(let json):

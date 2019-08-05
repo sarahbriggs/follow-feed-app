@@ -51,6 +51,7 @@ class LoginViewController: UIViewController {
         let url = URL(string: ConstantsEnum.baseUrl+ConstantsEnum.loginUrl)!
         return Promise { promise in
             Alamofire.request (url, method: .post, parameters: ["email": emailBox.text!])
+                .validate()
                 .responseJSON { response in
                     switch response.result {
                     case .success(let json):
@@ -68,6 +69,7 @@ class LoginViewController: UIViewController {
             Alamofire.request (url, method: .post, parameters: ["token": UserDefaults.standard.string(forKey: "APNSToken")!,
                                                                 "user_id": UserDefaults.standard.string(forKey: "user_id")!,
                                                                 "platform": "APNS_SANDBOX"])
+                .validate()
                 .responseJSON { response in
                     switch response.result {
                     case .success(let json):

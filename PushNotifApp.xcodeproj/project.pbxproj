@@ -13,7 +13,6 @@
 		4910CC9B22DF936100711956 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4910CC9922DF936100711956 /* Main.storyboard */; };
 		4910CC9D22DF936300711956 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4910CC9C22DF936300711956 /* Assets.xcassets */; };
 		4910CCA022DF936300711956 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4910CC9E22DF936300711956 /* LaunchScreen.storyboard */; };
-		492C41AC22E8B60600FFACCB /* ConfirmedSubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492C41AB22E8B60600FFACCB /* ConfirmedSubViewController.swift */; };
 		492C41AF22EA091E00FFACCB /* ConstantsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492C41AE22EA091D00FFACCB /* ConstantsEnum.swift */; };
 		49F7136622E24B4900D50494 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F7136522E24B4900D50494 /* LoginViewController.swift */; };
 		626C5C538382069E8750C744 /* Pods_PushNotifApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B22527EC06BC484BFFD4536 /* Pods_PushNotifApp.framework */; };
@@ -30,7 +29,6 @@
 		4910CC9C22DF936300711956 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4910CC9F22DF936300711956 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4910CCA122DF936300711956 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		492C41AB22E8B60600FFACCB /* ConfirmedSubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmedSubViewController.swift; sourceTree = "<group>"; };
 		492C41AE22EA091D00FFACCB /* ConstantsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConstantsEnum.swift; path = ViewControllers/ConstantsEnum.swift; sourceTree = "<group>"; };
 		4938DB3A22E75121001092B7 /* PushNotifApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PushNotifApp.entitlements; sourceTree = "<group>"; };
 		49F7136522E24B4900D50494 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -99,7 +97,6 @@
 				4906D69422EB54DF004AABB4 /* AdminViewController.swift */,
 				49F7136522E24B4900D50494 /* LoginViewController.swift */,
 				9AFA3B8022E24E84007C6AF7 /* SubscribeScreenViewController.swift */,
-				492C41AB22E8B60600FFACCB /* ConfirmedSubViewController.swift */,
 				4910CC9722DF936100711956 /* SignupViewController.swift */,
 			);
 			path = ViewControllers;
@@ -236,7 +233,6 @@
 				492C41AF22EA091E00FFACCB /* ConstantsEnum.swift in Sources */,
 				49F7136622E24B4900D50494 /* LoginViewController.swift in Sources */,
 				4910CC9822DF936100711956 /* SignupViewController.swift in Sources */,
-				492C41AC22E8B60600FFACCB /* ConfirmedSubViewController.swift in Sources */,
 				4906D69522EB54DF004AABB4 /* AdminViewController.swift in Sources */,
 				4910CC9422DF936100711956 /* AppDelegate.swift in Sources */,
 				9AFA3B8122E24E84007C6AF7 /* SubscribeScreenViewController.swift in Sources */,

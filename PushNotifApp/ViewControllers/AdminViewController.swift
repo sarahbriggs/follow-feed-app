@@ -10,28 +10,32 @@ import UIKit
 import Alamofire
 import PromiseKit
 
-class AdminViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class AdminViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     
     // MARK: - Properties
+    @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var popOver: UIView!
     var allTraders = [String]()
     var allTraderIds = [Int]()
-    var deleteThisTrader = -1
+
     
     //MARK: - Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+        nameField.delegate = self
         getAllTraders()
         popOver.isHidden = true
+//        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard)))
     }
     
     
     func getAllTraders() {
         allTraders.removeAll()
+        allTraderIds.removeAll()
         apiGetAllTraders()
             .done { json -> Void in
                 for dict in json {
@@ -45,6 +49,15 @@ class AdminViewController: UIViewController, UITableViewDataSource, UITableViewD
             .catch { error in
                 print(error.localizedDescription)
         }
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     func postNewTrader() {
@@ -61,8 +74,8 @@ class AdminViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
-    func deleteTrader() {
-        apiDeleteTrader()
+    func deleteTrader(traderId: Int) {
+        apiDeleteTrader(traderId: traderId)
             .done { json -> Void in
                 if json["deleted"] as! Bool == true {
                     self.getAllTraders()
@@ -105,10 +118,10 @@ class AdminViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
-    func apiDeleteTrader() -> Promise<[String: Any]> {
+    func apiDeleteTrader(traderId: Int) -> Promise<[String: Any]> {
         let url = URL(string: ConstantsEnum.baseUrl+ConstantsEnum.tradersUrl)!
         return Promise { promise in
-            Alamofire.request (url, method: .delete, parameters: ["id":deleteThisTrader])
+            Alamofire.request (url, method: .delete, parameters: ["id":traderId])
                 .responseJSON { response in
                     switch response.result {
                     case .success(let json):
@@ -133,7 +146,7 @@ class AdminViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         popOver.isHidden = false
-        deleteThisTrader = allTraderIds[indexPath.row]
+        deleteButton.tag = allTraderIds[indexPath.row]
     }
     
     //MARK: - Actions
@@ -144,7 +157,7 @@ class AdminViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBAction func cancelClicked(_ sender: Any) {
         popOver.isHidden = true
     }
-    @IBAction func yesClicked(_ sender: Any) {
-        deleteTrader()
+    @IBAction func yesClicked(_ sender: UIButton) {
+        deleteTrader(traderId: sender.tag)
     }
 }

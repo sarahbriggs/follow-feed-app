@@ -35,12 +35,9 @@ class LoginViewController: UIViewController {
     }
     
     func postDevice() {
-        print("posting device...")
-        print(UserDefaults.standard.string(forKey: "APNSToken")!)
         apiPostDevice()
             .done { json -> Void in
                 if !json.isEmpty {
-                    print(json)
                     self.performSegue(withIdentifier: "loginSuccess", sender: self)
                 }
             }

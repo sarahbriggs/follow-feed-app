@@ -36,7 +36,7 @@ class SubscribeScreenViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        getAllSubs()
+        getAllSubscriptions()
     }
     
     func getAllTraders() {
@@ -56,12 +56,11 @@ class SubscribeScreenViewController: UIViewController, UITableViewDelegate, UITa
         }
     }
     
-    func getAllSubs() {
+    func getAllSubscriptions() {
         self.currentSubs.removeAll()
-        apiGetAllSubs()
+        apiGetAllSubscriptions()
             .done { json -> Void in
                 for dict in json {
-                    print(dict)
                     self.currentSubs.append(dict["trader_id"] as! Int)
                 }
                 self.getAllTraders()
@@ -75,9 +74,7 @@ class SubscribeScreenViewController: UIViewController, UITableViewDelegate, UITa
         apiSubscribe()
             .done { json -> Void in
                 if !json.isEmpty { // on success, we get the subscription ARN back
-                    print("Subscribed")
-                    print(json["subscription_arn"]!)
-                    self.getAllSubs()
+                    self.getAllSubscriptions()
                 }
             }
             .catch { error in
@@ -101,7 +98,7 @@ class SubscribeScreenViewController: UIViewController, UITableViewDelegate, UITa
         }
     }
     
-    func apiGetAllSubs() -> Promise<[[String: Any]]> {
+    func apiGetAllSubscriptions() -> Promise<[[String: Any]]> {
         let url = URL(string: ConstantsEnum.baseUrl+ConstantsEnum.subscriptionsUrl)!
         return Promise { promise in
             Alamofire.request (url, method: .get, parameters: ["id":userId])
@@ -164,7 +161,7 @@ class SubscribeScreenViewController: UIViewController, UITableViewDelegate, UITa
         }
     }
 
-    //MARK: Actions
+    //MARK: - Actions
     @IBAction func subscribeClicked(_ sender: Any) {
         subscribe()
         popOver.isHidden = true

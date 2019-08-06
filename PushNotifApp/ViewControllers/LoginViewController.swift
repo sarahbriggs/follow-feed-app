@@ -26,12 +26,16 @@ class LoginViewController: UIViewController {
                 if !json.isEmpty {
                     let userId = json["user_id"]
                     UserDefaults.standard.set(userId, forKey: "user_id")
-                    self.postDevice()
+                    #if targetEnvironment(simulator)
+                        self.performSegue(withIdentifier: "loginSuccess", sender: self)
+                    #else
+                        self.postDevice()
+                    #endif
                 }
             }
             .catch { error in
                 print(error.localizedDescription)
-        }
+            }
     }
     
     func postDevice() {

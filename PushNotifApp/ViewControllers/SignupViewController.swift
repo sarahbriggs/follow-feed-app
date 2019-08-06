@@ -28,6 +28,22 @@ class SignupViewController: UIViewController {
                 if !json.isEmpty {
                     let userId = json["user_id"]
                     UserDefaults.standard.set(userId, forKey: "user_id")
+                    #if targetEnvironment(simulator)
+                        self.performSegue(withIdentifier: "signupSuccess", sender: self)
+                    #else
+                        self.postDevice()
+                    #endif
+                }
+            }
+            .catch { error in
+                print(error.localizedDescription)
+        }
+    }
+    
+    func postDevice() {
+        apiPostDevice()
+            .done { json -> Void in
+                if !json.isEmpty {
                     self.performSegue(withIdentifier: "signupSuccess", sender: self)
                 }
             }
@@ -41,6 +57,24 @@ class SignupViewController: UIViewController {
         let url = URL(string: ConstantsEnum.baseUrl+ConstantsEnum.signupUrl)!
         return Promise { promise in
             Alamofire.request (url, method: .post, parameters: ["name": nameBox.text!, "email": emailBox.text!])
+                .validate()
+                .responseJSON { response in
+                    switch response.result {
+                    case .success(let json):
+                        promise.fulfill(json as! [String : Any])
+                    case .failure(let error):
+                        promise.reject(error)
+                    }
+            }
+        }
+    }
+    
+    func apiPostDevice() -> Promise<[String: Any]> {
+        let url = URL(string: ConstantsEnum.baseUrl+ConstantsEnum.deviceUrl)!
+        return Promise { promise in
+            Alamofire.request (url, method: .post, parameters: ["token": UserDefaults.standard.string(forKey: "APNSToken")!,
+                                                                "user_id": UserDefaults.standard.string(forKey: "user_id")!,
+                                                                "platform": "APNS_SANDBOX"])
                 .validate()
                 .responseJSON { response in
                     switch response.result {

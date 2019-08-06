@@ -82,6 +82,17 @@ class SubscribeScreenViewController: UIViewController, UITableViewDelegate, UITa
         }
     }
     
+    func unsubscribe() {
+        apiUnsubscribe()
+            .done { json -> Void in
+                print(json)
+                self.getAllSubscriptions()
+            }
+            .catch { error in
+                print(error.localizedDescription)
+        }
+    }
+    
     // MARK: - API Calls
     func apiGetAllTraders() -> Promise<[[String: Any]]> {
         let url = URL(string: ConstantsEnum.baseUrl+ConstantsEnum.tradersUrl)!
@@ -131,6 +142,22 @@ class SubscribeScreenViewController: UIViewController, UITableViewDelegate, UITa
         }
     }
     
+    func apiUnsubscribe() -> Promise<[String: Any]> {
+        let url = URL(string: ConstantsEnum.baseUrl+ConstantsEnum.subscribeUrl)!
+        return Promise { promise in
+            Alamofire.request (url, method: .delete, parameters: ["trader_id": traderId, "user_id": userId])
+                .validate()
+                .responseJSON { response in
+                    switch response.result {
+                    case .success(let json):
+                        promise.fulfill(json as! [String : Any])
+                    case .failure(let error):
+                        promise.reject(error)
+                    }
+            }
+        }
+    }
+    
     //MARK: - Tableview funcs
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return allTraders.count
@@ -152,12 +179,12 @@ class SubscribeScreenViewController: UIViewController, UITableViewDelegate, UITa
         popOver.isHidden = false
         traderLabel.text = allTraders[indexPath.row] + "?"
         traderId = allTraderIds[indexPath.row]
-        if currentSubs.contains(allTraderIds[indexPath.row]) { // allow unsubscribe
+        if currentSubs.contains(allTraderIds[indexPath.row]) {
             subscribeLabel.text = "Unsubscribe from:"
             subscribeButton.isHidden = true
             unsubscibeButton.isHidden = false
         }
-        else { // allow subscribe
+        else {
             subscribeLabel.text = "Subscribe to:"
             subscribeButton.isHidden = false
             unsubscibeButton.isHidden = true
@@ -171,6 +198,8 @@ class SubscribeScreenViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     @IBAction func unsubscribeClicked(_ sender: Any) {
+        unsubscribe()
+        popOver.isHidden = true
     }
     
     @IBAction func cancelClicked(_ sender: Any) {

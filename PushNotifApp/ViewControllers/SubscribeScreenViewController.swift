@@ -93,6 +93,17 @@ class SubscribeScreenViewController: UIViewController, UITableViewDelegate, UITa
         }
     }
     
+    func logout() {
+        apiLogout()
+            .done { json -> Void in
+                print(json)
+                UserDefaults.standard.set(nil, forKey: "user_id")
+            }
+            .catch { error in
+                print(error.localizedDescription)
+        }
+    }
+    
     // MARK: - API Calls
     func apiGetAllTraders() -> Promise<[[String: Any]]> {
         let url = URL(string: ConstantsEnum.baseUrl+ConstantsEnum.tradersUrl)!
@@ -158,6 +169,23 @@ class SubscribeScreenViewController: UIViewController, UITableViewDelegate, UITa
         }
     }
     
+    func apiLogout() -> Promise<[String: Any]> {
+        let url = URL(string: ConstantsEnum.baseUrl+ConstantsEnum.logoutUrl)!
+        return Promise { promise in
+            Alamofire.request (url, method: .post, parameters: ["token": UserDefaults.standard.string(forKey: "APNSToken")!,
+                                                                "user_id": UserDefaults.standard.string(forKey: "user_id")!])
+                .validate()
+                .responseJSON { response in
+                    switch response.result {
+                    case .success(let json):
+                        promise.fulfill(json as! [String : Any])
+                    case .failure(let error):
+                        promise.reject(error)
+                    }
+            }
+        }
+    }
+    
     //MARK: - Tableview funcs
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return allTraders.count
@@ -206,7 +234,7 @@ class SubscribeScreenViewController: UIViewController, UITableViewDelegate, UITa
         popOver.isHidden = true
     }
     @IBAction func logoutClicked(_ sender: Any) {
-        UserDefaults.standard.set(nil, forKey: "user_id")
+        logout()
         self.performSegue(withIdentifier: "logout", sender: self)
     }
 }
